@@ -1,0 +1,54 @@
+/* FONTS */
+/*font-family: 'Poppins', sans-serif;
+font-family: 'Libre Baskerville', serif;
+font-family: 'Caveat', cursive;*/
+
+/*Header*/
+.logo {
+  margin-bottom: 0%;
+  padding-bottom: 0%;
+}
+
+.title, .sub-title {
+  font-family: 'Poppins', sans-serif;
+  margin-top: 0%;
+  padding-top: 0%;
+  margin-left: 4%;
+}
+
+.sub-title {
+  color: blue;
+}
+
+/*QUESTIONS*/
+.questions {
+  font-family: 'Poppins', sans-serif;
+}
+
+.questions2 {
+  font-family: 'Poppins', sans-serif;
+  color: blue;
+}
+
+.blue {
+  color: blue;
+}
+
+#name {
+  font-size: 18px;
+}
+
+.time {
+  margin: 2%;
+  color: black;
+}
+
+.submit {
+  color: white;
+  background-color: blue;
+}
+
+/*FOOTER*/
+#footer {
+  font-family: 'Poppins', sans-serif;
+}
