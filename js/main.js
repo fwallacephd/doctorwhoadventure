@@ -1,12 +1,60 @@
 let name;
 let doctor;
-let day;
+let monster;
 let tool;
 let time;
 let place;
+let year;
+let ending;
+
 
 //Calculate Year
+function calculateYear(time){
+  let present = Math.floor(Math.random() * 20) + 1;
+  let notPresent = Math.floor(Math.random() * 100) + 1;
+  if (time === "present"){
+    year = 2000 + present;
+  } else if (time === "past"){
+    year = 2000 - notPresent;
+  } else {
+    year = 2018 + notPresent;
+  }
+  console.log(year);
+  return (year)
+};
 
+//Create Ending
+function createEnding(monster){
+  if (monster === "The Daleks"){
+    ending = "The Doctor summons Missy and the three of you send The Daleks into the Time Vortex to think about their actions. The day is saved. But Missy sends you home."
+  } else if (monster === "The Cybermen") {
+    ending = "They want to upgrade everyone! So, The Doctor quickly uploads a worm into their mainframe, and they become confused long enough for The Doctor to send them into the Time Vortex! The day is saved."
+  } else if (monster === "The Silurians") {
+    ending = "Somehow a group of Silurian rebels have escaped their hibernation and want to create a new civilization for themselves. But The Doctor won't stand for fighting. Together you create a gentle sleep potion to subdue the Siluarians and take them back home. Somehow, you get infected with Silurian venom, and you don't make it. You are erased from history."
+  } else if (monster === "The Master"){
+    ending = "You are shocked. How can this be? The Master! It's true, and he's back. This time though, he has infiltrated Torchwood trying to steal their most dangerous weapons. But Captain Jack is too smart for him. He arrives just in time (through his vortex manipulator) and grabs The Master before he can use any of the weapons. Both Jack and The Master disapear."
+  } else if (monster === "The Sontarans"){
+    ending ="As you look closer, you realize The Sontarans are in the middle of absorbing much needed energy through their probe vents. You know that if you sever the connection abrubtly, The Sontarans will be helpless. And that's just what you do. But The Doctor thinks you are too violent, and sends you home."
+  } else if (monster === "Davros"){
+    ending = "It looks like Davros is alone, with no Daleks to help him. The Doctor believes this time he may have an advantage and attempts to reason with Davros. But you act first. You know his artifical eye is connected to his nervous system and a pointy stick to stab him. The Doctor says you are too much like Missy and sends you home."
+  } else if (monster === "The Zygons"){
+    ending = "Not the Zygons! They smell. They are slimy. Your first time in the TARDIS and you meet the Zygons. You are too busy complaing about your luck and don't realize that the closest Zygon has infected you with it's toxic venom. The Doctor has to take you to Sisters of the Infinite Schism to recover."
+  } else if (monster === "The Weeping Angels"){
+    ending = "You panic. The Doctor screams, 'Don't Blink'! You try to stay as still as possible with your eyes wide. The Doctor takes your hand and tries to move you away from their grasp, but it's too late. The Angels have touched you. Both you and The Doctor end up 200 into the past!"
+  } else if (monster === "The Vashta Nerada") {
+    ending = "The Vashta Nerada are the shadows that melt the flesh. You must both be careful to count the shadows. The Doctor cautions that you need leave this swarm alone - they are a small lost group, and he digs into his coat pockets and produces a chicken leg that he gives to the swarm. Then the two of you head for the planet New Vegas."
+  } else if (monster === "The Silence") {
+    ending = "Here's the problem: You can't remember seeing The Silence. And you can't describe The Silence. The TARDIS is drained of engery and your Vortex Manipulator isn't working. You keep forgetting what you are doing here and your Psychic Paper goes wonky. You spend 10 years trying find a way home, but you never realize that The Silence have been manipulating you the whole time."
+  } else if (monster === "Clara"){
+    ending ="You almost can't believe your eyes. Clara & Me are standing in front of you, smiling. Their travels in the 'other' TARDIS have sometimes put them dangerously close to aligning with The Doctor's travels. You are worried there will be a confrontation, but instead, all of you take the TARDIS to visit The Paternoster Gang sometime in the 1800s on Earth."
+  } else if (monster === "The Judoon") {
+    ending = "Something isn't right. Why are the Judoon here? It turns out that a prisoner from The Stormcage Containment Facility has escaped, and The Judoon are helping to reaquire this prisoner. Worrying that the prisoner is River Song, you send The Judoon on a wild good chase to Raxacoricofallapatorius!"
+  } else if (monster ==="The Headless Monks"){
+
+  }
+
+
+}
 
 //Collect Answers to Quiz Questions.
 $("#page1").on("click", function(){
@@ -15,7 +63,7 @@ $("#page1").on("click", function(){
   console.log (name);
   doctor = $("[name=month]").val();
   console.log(doctor);
-  day = $("[name=day]").val();
+  monster = $("[name=day]").val();
   place = $("[name=color]").val();
   time = $("[name=time]:checked").val();
   tool = $("[name=tool]").val();
@@ -27,7 +75,13 @@ $("#page1").on("click", function(){
 
   $(".introduction").text(name + ", you have finally met the doctor. Actually, the " + doctor + "! You are over the moon excited and ask the Doctor to take you some place fun like Space Florida, but, as the Doctor often does, he grabs your hand, and says, 'RUN'!");
 
-  $(".context").text("You have no time to ask questions. Before you realize it, you step out of hte TARDIS on " + place + " in the year ")
+  calculateYear(time);
+
+  $(".context").text("You have no time to ask questions. Before you realize it, you step out of the TARDIS on " + place + " in the year " + year + ". Unfortunately, someone got here before you: " + monster + "! And it's just you, the " + doctor + " and your " + tool + ".");
+
+  createEnding(monster);
+
+  $(".ending").text(ending);
 
 });
 
