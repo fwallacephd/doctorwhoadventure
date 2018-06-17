@@ -107,7 +107,6 @@ $(".page1").on("click", function(){
   $(".story").show();
   $("#list").show();
 
-
   $(".introduction").text(name + ", you have finally met the doctor. Actually, the " + doctor + "! You are over the moon excited and ask the Doctor to take you some place fun like Space Florida, but, as the Doctor often does, he grabs your hand, and says, 'RUN'!");
 
   calculateYear(time);
@@ -122,6 +121,8 @@ $(".page1").on("click", function(){
 
   $(".story-image").addClass("align-itmes-center img-fluid text-center doctor-image").prepend('<img src="' + image + '" /><br>');
 
+
+
 });
 
 $("#list").on("click", function(){
@@ -135,20 +136,3 @@ $("#list").on("click", function(){
 });
 
 
-$(".link").on("click", function(){
-  $(".questions-page1").show();
-  $(".submit-page-1").show();
-  $(".questions-page2").show();
-  $(".story").hide();
-  $(".database-table").hide();
-  $("#list").hide();
-
-  name = "";
-  doctor = "";
-  monster = "";
-  place = "";
-  time = "";
-  tool = "";
-  image = "";
-
-});
