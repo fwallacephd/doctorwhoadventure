@@ -48,6 +48,13 @@ font-family: 'Caveat', cursive;*/
   background-color: blue;
 }
 
+/*STORY*/
+.story-image {
+  width: 40%;
+  height: auto;
+  display: block;
+}
+
 /*FOOTER*/
 #footer {
   font-family: 'Poppins', sans-serif;

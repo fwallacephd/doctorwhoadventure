@@ -6,12 +6,13 @@ let time;
 let place;
 let year;
 let ending;
+let image;
 
 
 //Calculate Year
 function calculateYear(time){
   let present = Math.floor(Math.random() * 20) + 1;
-  let notPresent = Math.floor(Math.random() * 100) + 1;
+  let notPresent = Math.floor(Math.random() * 200) + 1;
   if (time === "present"){
     year = 2000 + present;
   } else if (time === "past"){
@@ -26,7 +27,7 @@ function calculateYear(time){
 //Create Ending
 function createEnding(monster){
   if (monster === "The Daleks"){
-    ending = "The Doctor summons Missy and the three of you send The Daleks into the Time Vortex to think about their actions. The day is saved. But Missy sends you home."
+    ending = "The Doctor summons Missy and the three of you send The Daleks into the Time Vortex to think about their actions. The day is saved. But Missy sends you home. She doesn't like to share The Doctor. You are just happy she doesn't stuff you inside a Dalek body like she did to Clara."
   } else if (monster === "The Cybermen") {
     ending = "They want to upgrade everyone! So, The Doctor quickly uploads a worm into their mainframe, and they become confused long enough for The Doctor to send them into the Time Vortex! The day is saved."
   } else if (monster === "The Silurians") {
@@ -50,11 +51,40 @@ function createEnding(monster){
   } else if (monster === "The Judoon") {
     ending = "Something isn't right. Why are the Judoon here? It turns out that a prisoner from The Stormcage Containment Facility has escaped, and The Judoon are helping to reaquire this prisoner. Worrying that the prisoner is River Song, you send The Judoon on a wild good chase to Raxacoricofallapatorius!"
   } else if (monster ==="The Headless Monks"){
-
+    ending = "At first, you don't see them, but you recognize their attack chanting. The Monks have joined The Shadow Proclamation to uphold galactic law. The Monks don't seem to be concerned with your presence. They are fighting with the Judoon for ultimate power of the law. You send a message with Psycic Paper to the Shadow Architect to find a peaceful solution."
   }
+};
 
-
-}
+//Determine Image
+function getImage(doctor){
+  if (doctor === "Twelfth Doctor") {
+    image = "Doctor12";
+  } else if (doctor === "Eleventhh Doctor"){
+    image = "Doctor11";
+  } else if (doctor === "Tenth Doctor"){
+    image = "Doctor10";
+  } else if (doctor === "Ninth Doctor") {
+    image = "Doctor9";
+  } else if (doctor === "Eighth Doctor"){
+    image = "Doctor8";
+  } else if (doctor === "Seventh Doctor") {
+    image = "Doctor7";
+  } else if (doctor === "Sixth Doctor") {
+    image = "Doctor6";
+  } else if (doctor === "Fifth Doctor") {
+    image = "Doctor5";
+  } else if (doctor === "Fourth Doctor") {
+    image = "Doctor4";
+  } else if (doctor === "Third Doctor") {
+    image = "Doctor3";
+  } else if (doctor === "Second Doctor") {
+    image = "Doctor2";
+  } else if (doctor === "First Doctor") {
+    image = "Doctor1";
+  }
+  image = image + '.png';
+  return (image);
+};
 
 //Collect Answers to Quiz Questions.
 $("#page1").on("click", function(){
@@ -77,11 +107,15 @@ $("#page1").on("click", function(){
 
   calculateYear(time);
 
-  $(".context").text("You have no time to ask questions. Before you realize it, you step out of the TARDIS on " + place + " in the year " + year + ". Unfortunately, someone got here before you: " + monster + "! And it's just you, the " + doctor + " and your " + tool + ".");
+  $(".context").text("You have no time to ask questions. Before you realize it, you step out of the TARDIS on " + place + " in approximately the year " + year + ". Unfortunately, someone got here before you: " + monster + "! And it's just you, the " + doctor + " and your " + tool + ".");
 
   createEnding(monster);
 
   $(".ending").text(ending);
+
+  getImage(doctor);
+  console.log(image);
+  $(".story-image").addClass("img-fluid").append('<img src="' + image + '" />');
 
 });
 
