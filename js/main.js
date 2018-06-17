@@ -57,9 +57,10 @@ function createEnding(monster){
 
 //Determine Image
 function getImage(doctor){
+  image = "";
   if (doctor === "Twelfth Doctor") {
     image = "Doctor12";
-  } else if (doctor === "Eleventhh Doctor"){
+  } else if (doctor === "Eleventh Doctor"){
     image = "Doctor11";
   } else if (doctor === "Tenth Doctor"){
     image = "Doctor10";
@@ -86,13 +87,14 @@ function getImage(doctor){
   return (image);
 };
 
+$("#list").hide();
+$(".database-table").hide();
+
 //Collect Answers to Quiz Questions.
-$("#page1").on("click", function(){
+$(".page1").on("click", function(){
   //Values
   name = $("[name=user-name]").val();
-  console.log (name);
   doctor = $("[name=month]").val();
-  console.log(doctor);
   monster = $("[name=day]").val();
   place = $("[name=color]").val();
   time = $("[name=time]:checked").val();
@@ -102,6 +104,9 @@ $("#page1").on("click", function(){
   $(".questions-page1").hide();
   $(".submit-page-1").hide();
   $(".questions-page2").hide();
+  $(".story").show();
+  $("#list").show();
+
 
   $(".introduction").text(name + ", you have finally met the doctor. Actually, the " + doctor + "! You are over the moon excited and ask the Doctor to take you some place fun like Space Florida, but, as the Doctor often does, he grabs your hand, and says, 'RUN'!");
 
@@ -114,9 +119,36 @@ $("#page1").on("click", function(){
   $(".ending").text(ending);
 
   getImage(doctor);
-  console.log(image);
-  $(".story-image").addClass("img-fluid").append('<img src="' + image + '" />');
+
+  $(".story-image").addClass("align-itmes-center img-fluid text-center doctor-image").prepend('<img src="' + image + '" /><br>');
 
 });
 
+$("#list").on("click", function(){
+  console.log("click");
+  $(".database-table").show();
+  $(".questions-page1").hide();
+  $(".submit-page-1").hide();
+  $(".questions-page2").hide();
+  $(".story").hide();
+  $("#list").hide();
+});
 
+
+$(".link").on("click", function(){
+  $(".questions-page1").show();
+  $(".submit-page-1").show();
+  $(".questions-page2").show();
+  $(".story").hide();
+  $(".database-table").hide();
+  $("#list").hide();
+
+  name = "";
+  doctor = "";
+  monster = "";
+  place = "";
+  time = "";
+  tool = "";
+  image = "";
+
+});

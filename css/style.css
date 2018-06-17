@@ -50,9 +50,19 @@ font-family: 'Caveat', cursive;*/
 
 /*STORY*/
 .story-image {
-  width: 40%;
+  max-width: 100%;
   height: auto;
-  display: block;
+  vertical-align: middle;
+}
+
+/*TABLE*/
+.database-table {
+  font-family: 'Poppins', sans-serif;
+}
+
+thead {
+  color: blue;
+  font-weight: bold;
 }
 
 /*FOOTER*/
