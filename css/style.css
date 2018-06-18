@@ -65,6 +65,16 @@ thead {
   font-weight: bold;
 }
 
+td {
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+}
+
+.delete {
+  color: blue;
+  text-decoration: underline;
+}
+
 /*FOOTER*/
 #footer {
   font-family: 'Poppins', sans-serif;
