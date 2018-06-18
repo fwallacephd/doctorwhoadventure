@@ -189,6 +189,16 @@ $("#list").on("click", function(){
 
 $("table").on("click", ".delete", function(){
   $(this).closest("tr").remove();
+  //currentID = $(this).closest("tr").attr("id");
+  //newUrl = baseUrl + "/who/" + currentID + ".json";
+  //verb: "DELETE";
+
+  //var params = {
+    //url: newUrl,
+    //method: verb
+  //}
+  //$.ajax(params);
+
 })
 
 
