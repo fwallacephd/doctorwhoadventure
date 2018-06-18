@@ -7,6 +7,11 @@ let place;
 let year;
 let ending;
 let image;
+let verb;
+
+let baseUrl = "https://doctor-who-adventure.firebaseio.com";
+let url = baseUrl + "/who.json";
+let currentID;
 
 
 //Calculate Year
@@ -87,8 +92,33 @@ function getImage(doctor){
   return (image);
 };
 
-$("#list").hide();
-$(".database-table").hide();
+//Display Adventure List
+function displayAdventureList(){
+  verb: "GET";
+
+  var params = {
+    url: url,
+    verb: verb,
+    success: function getData(adventures) {
+      console.log(adventures);
+      $(".table-body").html("");
+      for (let id in adventures) {
+        let adventure = adventures[id];
+        let newTableRow = $("<tr id='" + id + "'></tr>");
+        $(".table-body").append(newTableRow);
+        newTableRow.append("<td class='adventure-name'>" + adventure.name + "</td>").append("<td class='adventure-doctor'>" + adventure.doctor + "</td>").append("<td class='adventure-year'>" + adventure.year + "</td>").append("<td class='adventure-planet'>" + adventure.planet + "</td>").append("<td class='adventure-tool'>" + adventure.tool + "</td>").append("<td class='adventure-with'>" + adventure.with + "</td>").append("<td class='delete'>" + adventure.delete + "</td>");
+      }
+    }
+    };
+    $.ajax(params);
+}
+
+$(".page").hide();
+$(".questions-page1").show();
+$(".questions-page2").show();
+$(".submit-page-1").show();
+
+
 
 //Collect Answers to Quiz Questions.
 $(".page1").on("click", function(){
@@ -101,11 +131,10 @@ $(".page1").on("click", function(){
   tool = $("[name=tool]").val();
 
   //Hide and Show
-  $(".questions-page1").hide();
-  $(".submit-page-1").hide();
-  $(".questions-page2").hide();
+  $(".page").hide();
   $(".story").show();
   $("#list").show();
+
 
   $(".introduction").text(name + ", you have finally met the doctor. Actually, the " + doctor + "! You are over the moon excited and ask the Doctor to take you some place fun like Space Florida, but, as the Doctor often does, he grabs your hand, and says, 'RUN'!");
 
@@ -121,18 +150,45 @@ $(".page1").on("click", function(){
 
   $(".story-image").addClass("align-itmes-center img-fluid text-center doctor-image").prepend('<img src="' + image + '" /><br>');
 
+  $(".doctor-caption").addClass("text-center").text(doctor);
+
 
 
 });
 
 $("#list").on("click", function(){
-  console.log("click");
+  $(".page").hide();
   $(".database-table").show();
-  $(".questions-page1").hide();
-  $(".submit-page-1").hide();
-  $(".questions-page2").hide();
-  $(".story").hide();
-  $("#list").hide();
+
+  //Create Entry in DataBase
+  let entry = {
+    name: name,
+    doctor: doctor,
+    year: year,
+    planet: place,
+    tool: tool,
+    with: monster,
+    delete: "X",
+  }
+
+  verb = "POST";
+
+  let entryAsJson = JSON.stringify(entry);
+  console.log(entry);
+
+  var params = {
+    url: url,
+    method: verb,
+    data: entryAsJson,
+    success: function() {
+      displayAdventureList();
+    }
+  };
+  $.ajax(params);
 });
+
+$("table").on("click", ".delete", function(){
+  $(this).closest("tr").remove();
+})
 
 
