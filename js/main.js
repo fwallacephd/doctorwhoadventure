@@ -96,7 +96,6 @@ function displayAdventureList(){
     $.ajax(params);
 }
 
-
 //Get values
 function getValues(){
  let data = {
@@ -108,6 +107,30 @@ function getValues(){
     tool: $("[name=tool]").val(),
   }
  return (data);
+}
+
+//Post values to the database
+function postValues(data){
+   let entry = {
+    ...data,
+    year,
+    with: data.monster,
+    delete: "X",
+  }
+
+  let verb = "POST";
+  let entryAsJson = JSON.stringify(entry);
+  console.log(entry);
+
+  var params = {
+    url: url,
+    method: verb,
+    data: entryAsJson,
+    success: function() {
+      displayAdventureList();
+    }
+  };
+  $.ajax(params);
 }
 
 initialize();
@@ -140,26 +163,7 @@ $(".page1").on("click", function(){
   $(".doctor-caption").addClass("text-center").text(data.doctor);
 
   //Update database
-  let entry = {
-    ...data,
-    year,
-    delete: "X",
-  }
-
-  let verb = "POST";
-
-  let entryAsJson = JSON.stringify(entry);
-  console.log(entry);
-
-  var params = {
-    url: url,
-    method: verb,
-    data: entryAsJson,
-    success: function() {
-      displayAdventureList();
-    }
-  };
-  $.ajax(params);
+  postValues(data);
 
 });
 
@@ -167,16 +171,8 @@ $("#list").on("click", function(){
   $(".page").hide();
   $(".database-table").show();
 
-
   //Get values
-  let name = $("[name=user-name]").val();
-  let doctor = $("[name=month]").val();
-  let monster = $("[name=day]").val();
-  let place = $("[name=color]").val();
-  let time = $("[name=time]:checked").val();
-  let tool = $("[name=tool]").val();
-  console.log(name, doctor, monster, place, time, tool);
-  //Create Entry in DataBase
+  getValues();
 
 });
 
