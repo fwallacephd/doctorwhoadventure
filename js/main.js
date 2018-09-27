@@ -89,7 +89,7 @@ function displayAdventureList(){
         let adventure = adventures[id];
         let newTableRow = $("<tr id='" + id + "'></tr>");
         $(".table-body").append(newTableRow);
-        newTableRow.append("<td class='adventure-name'>" + adventure.name + "</td>").append("<td class='adventure-doctor'>" + adventure.doctor + "</td>").append("<td class='adventure-year'>" + adventure.year + "</td>").append("<td class='adventure-planet'>" + adventure.planet + "</td>").append("<td class='adventure-tool'>" + adventure.tool + "</td>").append("<td class='adventure-with'>" + adventure.with + "</td>").append("<td class='delete'>" + adventure.delete + "</td>");
+        newTableRow.append("<td class='adventure-name'>" + adventure.name + "</td>").append("<td class='adventure-doctor'>" + adventure.doctor + "</td>").append("<td class='adventure-year'>" + adventure.year + "</td>").append("<td class='adventure-planet'>" + adventure.place + "</td>").append("<td class='adventure-tool'>" + adventure.tool + "</td>").append("<td class='adventure-with'>" + adventure.with + "</td>").append("<td class='delete'>" + adventure.delete + "</td>");
       }
     }
     };
